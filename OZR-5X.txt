@@ -28,7 +28,8 @@ serial 4 131073 115200 57600 0 115200
 
 # aux
 aux 0 0 0 1900 2100 0 0
-aux 1 36 1 1900 2100 0 0
+aux 1 35 2 1875 2100 0 0
+aux 2 36 1 1900 2100 0 0
 
 # vtxtable
 vtxtable bands 6
@@ -67,9 +68,9 @@ set osd_stat_bitmask = 30508
 set osd_canvas_width = 50
 set osd_canvas_height = 18
 set vtx_band = 5
-set vtx_channel = 7
+set vtx_channel = 3
 set vtx_power = 1
-set vtx_freq = 5880
+set vtx_freq = 5732
 set displayport_msp_fonts = 0,0,0,0
 set rpm_filter_weights = 100,50,100
 set rpm_filter_fade_range_hz = 100
