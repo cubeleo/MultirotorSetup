@@ -1,0 +1,110 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F7X2 (S7X2) 4.4.0 Mar  9 2023 / 17:54:17 (4605309d8) MSP API: 1.45
+
+# config: YES
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name BLADE_F7_HD
+manufacturer_id RUSH
+mcu_id 002200165931500420383539
+signature 
+
+# feature
+feature -LED_STRIP
+feature -ESC_SENSOR
+feature OSD
+
+# beacon
+beacon RX_LOST
+beacon RX_SET
+
+# aux
+aux 0 0 0 1900 2100 0 0
+aux 1 13 3 1875 2100 0 0
+aux 2 35 2 1875 2100 0 0
+aux 3 36 1 1700 2100 0 0
+
+# master
+set gyro_lpf1_static_hz = 0
+set gyro_lpf2_static_hz = 0
+set dyn_notch_count = 2
+set dyn_notch_q = 500
+set gyro_lpf1_dyn_min_hz = 0
+set acc_hardware = NONE
+set baro_hardware = NONE
+set rc_smoothing_auto_factor = 120
+set dshot_bidir = ON
+set motor_pwm_protocol = DSHOT600
+set yaw_motors_reversed = ON
+set report_cell_voltage = ON
+set debug_mode = GYRO_SCALED
+set vcd_video_system = HD
+
+profile 0
+
+# profile 0
+set throttle_boost = 0
+set p_pitch = 50
+set i_pitch = 81
+set d_pitch = 48
+set f_pitch = 188
+set p_roll = 53
+set i_roll = 86
+set d_roll = 41
+set f_roll = 201
+set p_yaw = 53
+set i_yaw = 86
+set f_yaw = 201
+set d_min_roll = 35
+set d_min_pitch = 40
+set feedforward_averaging = 2_POINT
+set feedforward_smooth_factor = 65
+set dyn_idle_min_rpm = 30
+set simplified_master_multiplier = 120
+set simplified_i_gain = 90
+set simplified_dmax_gain = 50
+set simplified_feedforward_gain = 140
+set simplified_pitch_pi_gain = 90
+
+profile 1
+
+profile 2
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set roll_rc_rate = 18
+set pitch_rc_rate = 18
+set yaw_rc_rate = 18
+set roll_expo = 60
+set pitch_expo = 20
+set yaw_expo = 20
+set roll_srate = 54
+set pitch_srate = 36
+set yaw_srate = 36
+set throttle_limit_type = SCALE
+set throttle_limit_percent = 80
+
+rateprofile 1
+
+rateprofile 2
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 0
+
+# save configuration
