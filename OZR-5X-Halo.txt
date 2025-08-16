@@ -1,9 +1,10 @@
 defaults nosave
 
+# diff all
 
 # version
-# Betaflight / STM32F7X2 (S7X2) 4.5.1 Jul 30 2024 / 01:05:08 (77d01ba3b) MSP API: 1.46
-# config rev: bc5da0e
+# Betaflight / STM32H743 (SH74) 4.5.1 Dec 18 2024 / 00:54:02 (77d01ba3b) MSP API: 1.46
+# config rev: 0096077
 
 # start the command batch
 batch start
@@ -11,25 +12,29 @@ batch start
 # reset configuration to default settings
 defaults nosave
 
-board_name FOXEERF722V4
-manufacturer_id FOXE
-mcu_id 0024002a4232500820313358
+board_name HDZERO_HALO
+manufacturer_id HDZO
+mcu_id 0042003a3233511736353832
 signature 
 
 # name: OZR-5X
 
+# resources
+resource LED 2 C14
+
 # feature
 feature TELEMETRY
+feature LED_STRIP
 feature OSD
 
 # serial
-serial 0 64 115200 57600 0 115200
-serial 1 131073 115200 57600 0 115200
+serial 4 131073 115200 57600 0 115200
 
 # aux
 aux 0 0 0 1900 2100 0 0
-aux 1 35 2 1875 2100 0 0
-aux 2 36 1 1900 2100 0 0
+aux 1 13 3 1300 2100 0 0
+aux 2 35 2 1900 2100 0 0
+aux 3 36 1 1900 2100 0 0
 
 # vtxtable
 vtxtable bands 6
@@ -46,22 +51,25 @@ vtxtable powerlabels 25 200 0
 
 # master
 set gyro_lpf1_static_hz = 0
+set gyro_lpf2_static_hz = 0
+set gyro_to_use = SECOND
 set dyn_notch_count = 1
 set dyn_notch_q = 450
 set dyn_notch_min_hz = 125
 set dyn_notch_max_hz = 650
 set gyro_lpf1_dyn_min_hz = 0
 set gyro_lpf1_dyn_max_hz = 0
-set acc_calibration = -44,-81,-367,1
+set acc_calibration = 163,-65,-69,1
+set min_check = 1000
+set max_check = 2000
 set rc_smoothing_auto_factor = 25
 set rc_smoothing_auto_factor_throttle = 25
 set dshot_bidir = ON
+set ibata_scale = 100
 set yaw_motors_reversed = ON
-set small_angle = 180
 set simplified_gyro_filter = OFF
 set osd_link_quality_pos = 3595
 set osd_rssi_dbm_pos = 3627
-set osd_tim_1_pos = 33
 set osd_tim_2_pos = 2560
 set osd_g_force_pos = 2592
 set osd_pilot_name_pos = 2600
@@ -75,7 +83,6 @@ set vtx_band = 5
 set vtx_channel = 1
 set vtx_power = 1
 set vtx_freq = 5658
-set displayport_msp_fonts = 0,0,0,0
 set rpm_filter_weights = 100,50,100
 set rpm_filter_fade_range_hz = 100
 set craft_name = OZR-5X
@@ -85,7 +92,6 @@ profile 0
 
 # profile 0
 set dterm_lpf1_dyn_expo = 7
-set vbat_sag_compensation = 100
 set iterm_relax_cutoff = 45
 set iterm_limit = 500
 set pidsum_limit_yaw = 1000
@@ -101,7 +107,7 @@ set f_roll = 113
 set d_min_roll = 18
 set d_min_pitch = 21
 set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 65
+set feedforward_smooth_factor = 35
 set feedforward_jitter_factor = 4
 set feedforward_boost = 18
 set feedforward_max_rate_limit = 100
@@ -119,111 +125,12 @@ set ez_landing_limit = 5
 
 profile 1
 
-# profile 1
-set dterm_lpf1_dyn_expo = 7
-set iterm_relax_cutoff = 45
-set iterm_limit = 500
-set pidsum_limit_yaw = 1000
-set throttle_boost = 0
-set p_pitch = 37
-set i_pitch = 80
-set d_pitch = 36
-set f_pitch = 124
-set p_roll = 34
-set i_roll = 73
-set d_roll = 31
-set f_roll = 113
-set d_min_roll = 18
-set d_min_pitch = 21
-set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 65
-set feedforward_jitter_factor = 3
-set feedforward_boost = 18
-set feedforward_max_rate_limit = 100
-set simplified_pids_mode = RP
-set simplified_master_multiplier = 90
-set simplified_i_gain = 120
-set simplified_d_gain = 70
-set simplified_pi_gain = 85
-set simplified_dmax_gain = 200
-set simplified_feedforward_gain = 105
-set simplified_pitch_pi_gain = 105
-set tpa_rate = 70
-set tpa_breakpoint = 1250
-set ez_landing_limit = 5
-
 profile 2
-
-# profile 2
-set dterm_lpf1_dyn_expo = 7
-set iterm_relax_cutoff = 45
-set iterm_limit = 500
-set pidsum_limit_yaw = 1000
-set throttle_boost = 0
-set p_pitch = 37
-set i_pitch = 80
-set d_pitch = 36
-set f_pitch = 124
-set p_roll = 34
-set i_roll = 73
-set d_roll = 31
-set f_roll = 113
-set d_min_roll = 18
-set d_min_pitch = 21
-set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 65
-set feedforward_jitter_factor = 3
-set feedforward_boost = 18
-set feedforward_max_rate_limit = 100
-set simplified_pids_mode = RP
-set simplified_master_multiplier = 90
-set simplified_i_gain = 120
-set simplified_d_gain = 70
-set simplified_pi_gain = 85
-set simplified_dmax_gain = 200
-set simplified_feedforward_gain = 105
-set simplified_pitch_pi_gain = 105
-set tpa_rate = 70
-set tpa_breakpoint = 1250
-set ez_landing_limit = 5
 
 profile 3
 
-# profile 3
-set dterm_lpf1_dyn_expo = 7
-set iterm_relax_cutoff = 45
-set iterm_limit = 500
-set pidsum_limit_yaw = 1000
-set throttle_boost = 0
-set p_pitch = 37
-set i_pitch = 80
-set d_pitch = 36
-set f_pitch = 124
-set p_roll = 34
-set i_roll = 73
-set d_roll = 31
-set f_roll = 113
-set d_min_roll = 18
-set d_min_pitch = 21
-set feedforward_averaging = 2_POINT
-set feedforward_smooth_factor = 65
-set feedforward_jitter_factor = 3
-set feedforward_boost = 18
-set feedforward_max_rate_limit = 100
-set simplified_pids_mode = RP
-set simplified_master_multiplier = 90
-set simplified_i_gain = 120
-set simplified_d_gain = 70
-set simplified_pi_gain = 85
-set simplified_dmax_gain = 200
-set simplified_feedforward_gain = 105
-set simplified_pitch_pi_gain = 105
-set tpa_rate = 70
-set tpa_breakpoint = 1250
-set ez_landing_limit = 5
-
 # restore original profile selection
-profile 2
+profile 0
 
 rateprofile 0
 
